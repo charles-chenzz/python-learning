@@ -18,6 +18,6 @@ def request_module():
   print(response_text) 
   print(response.text) 
   print(response.content)
-  #json.dumps() json.loads()  python_data and json format validate
+  #json.dumps() json.loads()  important for the future data format
   
 request_module()
