@@ -1,0 +1,23 @@
+import requests
+import json
+
+def request_module():
+
+  proxies = {
+    'http' : 'http://127.0.0.1:3128',
+    'https' : 'http://127.0.0.1:3128'
+  }
+  
+  response = requests.get(url=url, headers=headers, proxies=proxies)  
+  # response equals to the info that you want to get on the url,usually the type of it is text and need to change it to json format, which need json module
+  # some site need headers to make the request get thru, so need to find the headers, usually press F12 and click Network to find(user-agent/cookie/content-type etc)
+  # proxies is easy to understand, some site will ban your request so you need proxies for it(especially when scraping site)
+  # proxies format is easy to understand but need to provide http and https and then write in this format 'http://ip:port' or you can use proxymanager module to manage it
+
+  response_text = json.dumps(response, indent = 5) # change data to json / insert number into indent to get it cleaner
+  print(response_text) 
+  print(response.text) 
+  print(response.content)
+  #json.dumps() json.loads()  python_data and json format validate
+  
+request_module()
