@@ -1,5 +1,7 @@
 import requests
 import json
+import re
+from bs4 import BeautifulSoup
 
 def request_module():
 
@@ -20,4 +22,19 @@ def request_module():
   print(response.content)
   #json.dumps() json.loads()  important for the future data format
   
-request_module()
+
+def bs4_example(url):
+  url = 'https://movie.douban.com/top250?start=%s'
+  
+  headers = {
+  'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36'
+  }
+  
+  response1 = requests.get(url=url,headers=headers) # add proxies if you want, but I run local without ban
+  soup = BeautifulSoup(response1.text, 'html.parser') #bs4 format
+  info_package = soup.find_all(class_= "title") #match the info you want
+  
+  for i in info_package:
+    print(i.get_text()) # will print the top 10 movie's name
+    
+# you can use re module to get url/image/name/rating etc on douban site as a good way to learn re/bs4/requests module  
