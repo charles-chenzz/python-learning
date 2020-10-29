@@ -1,0 +1,27 @@
+import csv
+
+def files_reader():
+  with open('profile.csv','rb') as myProfile:
+    lines = csv.reader(myProfile)
+    for line in lines:
+      print(line)
+      
+# open() return a file name myProfile / lines is the result of reader() and it's a list    
+
+def files_writer():
+  with open('profile.csv','wb') as myProfile:
+    my_Writer = csv.writer(myProfile)
+    my_Writer.writerow([10,'tom'])
+    my_Writer.writerow([20,'sam'])
+    my_List=[[1,2,3],[4,5,6]]
+    my_Writer.writerows(my_List)
+    
+# .writerow() will write data one per line .writerows() will write data muti at a time
+
+with open('proxies.txt','rb') as proxies_txt:
+  proxies_list = proxies_txt.read().split("\n")
+  proxies = []
+  for proxy in proxies_list:
+    split = proxy.split(":")
+    proxies_format= f"http://{split[2]}:{split[3]}@{split[0]}:{split[1]}/"
+    proxies.append(proxies_format)
