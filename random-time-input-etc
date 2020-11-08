@@ -1,0 +1,19 @@
+import random
+import time
+
+def gen_random_num():
+  num1 = int(input())
+  num2 = int(input())
+  random_num = random.randint(num1,num2)
+  print(random_num)
+  
+# this function will generate random num between the numbers you input
+
+def random_choice_data():
+    data = ['bob', 'pop', 'qoq']
+    random_choice = random.choice(data)
+    print(random_choice)
+    
+# this function will choose random name on data
+
+# will update more soon
